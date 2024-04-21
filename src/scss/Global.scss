@@ -1,0 +1,811 @@
+@import "../scss/Mixin.scss";
+@import "../scss/Variable.scss";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: $primary-font;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+.container {
+    max-width: 1240px;
+    padding: 0 20px;
+    margin: auto;
+}
+
+a {
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.section-title {
+    color: $secondary-color;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.section-subtitle {
+    color: $primary-color;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+
+.spacing_top {
+    padding-top: 80px;
+}
+
+.spacing_bottom {
+    padding-bottom: 80px;
+}
+
+/*$$$ 2. Header css $$$*/
+.header {
+    box-shadow: $box-shadow;
+    background-color: $white-color;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+}
+
+.navbar {
+    @include flex-properties(flex, space-between, center);
+    padding: 25px 0;
+    .menu {
+        display: flex;
+        gap: 70px;
+        a {
+            font-size: 18px;
+        }
+    }
+}
+.logo,
+.menu a {
+    color: $primary-color;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.logo {
+    font-size: 20px;
+}
+
+.menu a:hover,
+.logo:hover {
+    color: $secondary-color;
+}
+
+#checkbox {
+    display: none;
+}
+
+.toggle {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    flex-direction: column;
+    @include flex-properties(flex, center, center);
+    gap: 7px;
+    transition-duration: 0.5s;
+}
+
+.bars {
+    width: 100%;
+    height: 4px;
+    background-color: $primary-color;
+    border-radius: 4px;
+}
+
+#bar2 {
+    transition-duration: 0.8s;
+}
+
+#bar1,
+#bar3 {
+    width: 70%;
+}
+
+#checkbox:checked + .toggle .bars {
+    position: absolute;
+    transition-duration: 0.5s;
+}
+
+#checkbox:checked + .toggle #bar2 {
+    transform: scaleX(0);
+    transition-duration: 0.5s;
+}
+
+#checkbox:checked + .toggle #bar1 {
+    width: 100%;
+    transform: rotate(45deg);
+    transition-duration: 0.5s;
+}
+
+#checkbox:checked + .toggle #bar3 {
+    width: 100%;
+    transform: rotate(-45deg);
+    transition-duration: 0.5s;
+}
+
+#checkbox:checked + .toggle {
+    transition-duration: 0.5s;
+    transform: rotate(180deg);
+}
+
+.mobile_hamburg_icon {
+    display: none;
+}
+
+/*$$$ 3.Home page css $$$*/
+/*$$$ 3.1 Hero Section css $$$*/
+.hero {
+    background-color: $bg-color;
+}
+
+.hero-main {
+    gap: 10rem;
+    @include flex-properties(flex, space-between, center);
+}
+
+.hero-text {
+    max-width: 600px;
+    h1 {
+        font-size: 60px;
+        color: $primary-color;
+    }
+    p {
+        margin-block: 40px;
+    }
+    img {
+        max-width: 50px;
+        vertical-align: middle;
+    }
+    .social_icon {
+        display: flex;
+        gap: 20px;
+        a {
+            color: $primary-color;
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+    }
+}
+.waving-hand {
+    animation: waving 0.45s linear infinite;
+    animation-direction: alternate-reverse;
+}
+@keyframes waving {
+    from {
+        transform: rotate(40deg);
+        transform-origin:center;
+    }
+    to {
+        transform: rotate(-10deg);
+        transform-origin:center;
+    }
+}
+.btn.btn-primary {
+    background-color: $secondary-color;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: $white-color;
+    margin-bottom: 50px;
+    display: inline-block;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.btn.btn-primary:hover {
+    background-color: $primary-color;
+}
+.buttonDownload {
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    text-indent: 15px;
+    border: none;
+}
+
+.buttonDownload:before,
+.buttonDownload:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 52%;
+}
+
+.buttonDownload:before {
+    width: 10px;
+    height: 2px;
+    border-style: solid;
+    border-width: 0 2px 2px;
+}
+
+.buttonDownload:after {
+    width: 0;
+    height: 0;
+    margin-left: 3px;
+    margin-top: -7px;
+    border-style: solid;
+    border-width: 4px 4px 0 4px;
+    border-color: transparent;
+    border-top-color: inherit;
+    animation: downloadArrow 1s linear infinite;
+    animation-play-state: paused;
+}
+
+.buttonDownload:hover:before {
+    border-color: #cdefbd;
+}
+
+.buttonDownload:hover:after {
+    border-top-color: #cdefbd;
+    animation-play-state: running;
+}
+
+@keyframes downloadArrow {
+    0% {
+        margin-top: -7px;
+        opacity: 1;
+    }
+
+    0.001% {
+        margin-top: -15px;
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        margin-top: 0;
+        opacity: 0.4;
+    }
+}
+.hero-img {
+    -webkit-animation: morph 8s ease-in-out infinite;
+    animation: morph 8s ease-in-out infinite;
+    background-image: url(../assets/images/user.jpg);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 3px solid $primary-color;
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+    height: 20rem;
+    position: relative;
+    transition: all 1s ease-in-out;
+    width: 20rem;
+}
+
+@keyframes morph {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+}
+
+.logos li img {
+    transition: all 0.3s ease-in-out;
+    max-height: 48px;
+    object-fit: contain;
+    &:hover {
+        transform: translateY(-1rem);
+    }
+}
+
+.skills,
+.skills ul {
+    @include flex-properties(flex, "", center);
+    gap: 20px;
+}
+
+.skills > p {
+    border-right: 2px solid $primary-color;
+    padding-right: 20px;
+    line-height: 1;
+    font-weight: 500;
+    color: $black-color;
+}
+
+/*$$$ 3.2 About Section css $$$*/
+.about-content {
+    @include flex-properties(flex, center, center);
+    gap: 80px;
+}
+
+.about-content > div {
+    max-width: calc(50% - 40px);
+    width: 100%;
+}
+
+.img-side {
+    position: relative;
+    span {
+        background-color: $white-color;
+        border-radius: 50%;
+        bottom: -30px;
+        height: 12rem;
+        position: absolute;
+        right: 0;
+        width: 12rem;
+        img {
+            -webkit-animation: rotate 9s linear infinite;
+            animation: rotate 9s linear infinite;
+            width: 12rem;
+        }
+    }
+}
+
+.img-side__main-img {
+    border-radius: $border-radius;
+    height: 25rem;
+    width: 30rem;
+}
+.work-emoji {
+    bottom: 40px;
+    position: absolute;
+    right: 70px;
+    width: 4rem;
+    z-index: 1;
+}
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*$$$ 3.3 Projects Section css $$$*/
+.projects {
+    background-color: $bg-color;
+}
+
+.projects-grid {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    height: auto;
+    width: 100%;
+    padding-top: 50px;
+    .pro__img {
+        background-color: hsla(0, 0%, 46%, 0.2);
+        border-radius: $border-radius;
+        box-shadow: $box-shadow;
+        height: auto;
+        overflow: hidden;
+        img {
+            height: auto;
+            width: 100%;
+            &:hover {
+                transform: translateY(-70%) !important;
+                transition: transform 10s ease-in-out 0s !important;
+            }
+        }
+    }
+}
+.project {
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;
+    display: flex;
+    gap: 80px;
+    height: 25rem;
+    padding: 2rem;
+}
+
+.project > div {
+    max-width: calc(50% - 40px);
+}
+.stack {
+    gap: 30px;
+    margin-block: 20px 30px;
+    @include flex-properties(flex, "", center);
+    p {
+        background-color: $white-color;
+        box-shadow: $box-shadow;
+        color: $black-color;
+        font-weight: 600;
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+}
+.pro__text {
+    display: flex;
+    flex-direction: column;
+    h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: $primary-color;
+        text-transform: uppercase;
+        @include flex-properties(flex, "", center);
+        gap: 5px;
+        span {
+            font-size: 16px;
+            color: hsla(0, 5%, 8%, 0.773);
+        }
+    }
+}
+
+.links {
+    margin-top: auto;
+    display: flex;
+    gap: 30px;
+    a {
+        @include flex-properties(flex, "", center);
+        font-size: 18px;
+        color: $primary-color;
+        font-weight: 600;
+        text-decoration: none;
+        gap: 5px;
+        transition: all ease-in-out 0.3s;
+        &:hover {
+            color: $secondary-color;
+        }
+    }
+}
+/*$$$ 3.4 Contact Section css $$$*/
+.contact__icons,
+.contact__icon-box,
+.contact__icon-box span {
+    @include flex-properties(flex, "", center);
+}
+
+.contact__icons {
+    padding-top: 45px;
+    gap: 50px;
+}
+
+.contact__icon-box {
+    gap: 30px;
+    span {
+        background-color: $white-color;
+        border-radius: 50%;
+        box-shadow: $box-shadow;
+        color: $secondary-color;
+        justify-content: center;
+        height: 4rem;
+        width: 4rem;
+    }
+}
+
+.contact__info a,
+p {
+    color: $gray-color;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+}
+
+.contact__info a,
+.contact__info p {
+    margin-top: 10px;
+    display: inline-block;
+    text-align: left;
+}
+
+.contact__info a:hover {
+    color: $secondary-color;
+}
+
+/*$$$ 4. Footer css $$$*/
+.footer {
+    background-color: $primary-color;
+    padding: 3rem 0;
+    color: $white-color;
+}
+
+.footer-content {
+    @include flex-properties(flex, space-between, center);
+}
+
+.footer_social {
+    @include flex-properties(flex, "", center);
+    gap: 20px;
+    a {
+        color: $white-color;
+        &:hover {
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+            transition: all 0.2s ease-in-out;
+        }
+    }
+}
+
+/*$$$ 5. Responsive css $$$*/
+@media (max-width: 1200px) {
+    .spacing_bottom {
+        padding-bottom: 60px;
+    }
+
+    .spacing_top {
+        padding-top: 60px;
+    }
+
+    .projects-grid {
+        padding-top: 30px;
+    }
+
+    .contact__icons {
+        padding-top: 25px;
+    }
+
+    .hero-main {
+        gap: 5rem;
+    }
+
+    .hero-img {
+        height: 15rem;
+        width: 15rem;
+    }
+
+    .hero-text h1 {
+        font-size: 50px;
+    }
+
+    .about-content,
+    .project {
+        gap: 60px;
+    }
+
+    .about-content > div,
+    .project > div {
+        max-width: calc(50% - 30px);
+    }
+}
+
+@media (max-width: 991px) {
+    .about-content,
+    .project {
+        gap: 40px;
+    }
+
+    .about-content > div,
+    .project > div {
+        max-width: calc(50% - 20px);
+    }
+
+    .contact__icons {
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .contact__icon-box {
+        gap: 25px;
+    }
+    .hero-text {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-main {
+        gap: 4rem;
+        flex-direction: column-reverse;
+    }
+
+    .skills {
+        flex-direction: column;
+    }
+
+    .skills > p {
+        border-right: 0;
+        border-bottom: 2px solid $primary-color;
+        padding-right: 0px;
+        padding-bottom: 20px;
+    }
+
+    .about-content,
+    .project {
+        flex-direction: column;
+    }
+
+    .project {
+        gap: 40px;
+        height: 40rem;
+    }
+
+    .contact__icon-box {
+        gap: 25px;
+    }
+
+    .contact__icon-box svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .contact__icons {
+        gap: 30px;
+    }
+
+    .about-content > div,
+    .project > div {
+        max-width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 40px;
+    }
+
+    .img-side__main-img {
+        width: 90%;
+    }
+
+    .mobile_hamburg_icon {
+        display: block;
+    }
+
+    .navbar .menu {
+        display: flex;
+        gap: 50px;
+        position: absolute;
+        top: 80px;
+        background: #fff;
+        flex-direction: column;
+        width: 100%;
+        left: -100%;
+        text-align: center;
+        padding: 40px 20px 40px;
+        border-top: 1px solid #f7f7f7;
+        transition: all ease-in-out 0.3s;
+    }
+
+    .navbar .menu.open {
+        left: 0;
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    .hero-text .social_icon {
+        justify-content: center;
+    }
+    .hero-text p {
+        margin-block: 30px;
+    }
+}
+
+@media (max-width: 575px) {
+    .hero-text .social_icon,
+    .pro__text h3,
+    .stack,
+    .links {
+        justify-content: center;
+    }
+
+    .hero-text,
+    .projects,
+    .about {
+        text-align: center;
+    }
+
+    .spacing_top {
+        padding-top: 40px;
+    }
+
+    .spacing_bottom {
+        padding-bottom: 40px;
+    }
+
+    .hero-main {
+        gap: 3rem;
+    }
+
+    .projects-grid {
+        gap: 2rem;
+        padding-top: 20px;
+    }
+
+    .skills,
+    .skills ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .section-title {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .section-subtitle {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .stack p {
+        font-size: 14px;
+        padding: 5px 25px;
+    }
+
+    .links a svg {
+        width: 20px;
+    }
+
+    .links a {
+        font-size: 16px;
+    }
+
+    .img-side__main-img {
+        height: 15rem;
+    }
+
+    .contact__info a,
+    p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .pro__text h3 span {
+        font-size: 14px;
+    }
+
+    .pro__text h3 {
+        font-size: 17px;
+    }
+
+    .project {
+        padding: 1.5rem;
+    }
+
+    .work-emoji {
+        bottom: 20px;
+        right: 40px;
+        width: 3rem;
+    }
+
+    .img-side span img {
+        width: 8rem;
+    }
+
+    .img-side span {
+        background-color: $white-color;
+        border-radius: 50%;
+        bottom: -30px;
+        height: 8rem;
+        position: absolute;
+        right: 0;
+        width: 8rem;
+    }
+
+    .copyrighttext {
+        font-size: 16px;
+        padding-right: 20px;
+    }
+
+    .footer_social a svg {
+        width: 24px;
+    }
+
+    .footer {
+        padding: 2rem 0;
+    }
+}
