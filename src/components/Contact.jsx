@@ -28,7 +28,7 @@ const Contact = () => {
               </span>
               <div className="contact__info">
                 <h3>Phone</h3>
-                <a href="tel:91-998-896-0789">+91-998-896-0789</a>
+                <a href="tel:91-840-946-8079">+91-840-946-8079</a>
               </div>
             </div>
             {/* Location */}
@@ -57,7 +57,7 @@ const Contact = () => {
               </span>
               <div className="contact__info">
                 <h3>E-Mail</h3>
-                <a href="mailto:info@tech-prastish.com">info@tech-prastish.com</a>
+                <a href="mailto:santosh1500165@gmail.com">santosh1500165@gmail.com</a>
               </div>
             </div>
           </div>
